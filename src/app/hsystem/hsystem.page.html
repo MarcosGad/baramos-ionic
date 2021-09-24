@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+      نظام بيت الخلوة 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="أسحب لأعادة التحميل" refreshingSpinner="lines-small">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  
+ <div *ngIf="show == 'good'">
+  <ion-card *ngFor="let system of hsystem">
+    <ion-card-content  class="system-name" [innerHTML]="system.name"></ion-card-content> 
+  </ion-card>
+ </div>
+
+<div *ngIf="show == 'bad'">
+  <p class="lod-error">يوجد خطأ حاول مرة أخرى <br>أو تأكد من أتصال الأنترنت</p>
+</div>
+
+</ion-content>

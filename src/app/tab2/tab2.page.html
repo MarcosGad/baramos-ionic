@@ -1,0 +1,187 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+       حجز الخلوة
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="أسحب لأعادة التحميل" refreshingSpinner="lines-small">
+    </ion-refresher-content>
+  </ion-refresher>
+
+<div *ngIf="show == 'good' && !cash">
+
+  <ion-item>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;">الأسم</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.name" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-item>
+
+  <ion-item>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;">البريد الألكترونى</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.email" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-item>
+
+   <ion-item>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;">رقم المحمول</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.phone_number" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-item>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;">تاريخ الميلاد</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.birth_day" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.birth_month" disabled></ion-input>
+      </ion-item>   
+    </ion-col>
+    <ion-col size="2">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.birth_year" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-item>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;">الدراسة / العمل</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.work" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-item>
+
+  <ion-item>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;">المحافظة</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.city" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;">الكنيسة / الإيبارشية</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.church" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-item>
+
+  <ion-item>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label style="color: red;"> أب الإعتراف</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="userData.father" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-item>
+  
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+
+    <ion-item>
+      <ion-label position="fixed">تاريخ الخلوة</ion-label>
+
+          <input
+          type="text"
+          mwlFlatpickr
+          formControlName="date_of_hagz"
+          [disable] = "[one,three,five,seven,nine,eleven,thirteen,fifteen,sixteen,seventeen,eighteen,
+          nineteen,twenty,twentyOne,{from:fromToDay,to: ToDay},
+          {from:one,to: two},{from:three,to: four},
+          {from:five,to: six},{from:seven,to: eight},
+          {from:nine,to: ten},{from:eleven,to: twelve},{from:thirteen,to: fourteen}]">
+
+    </ion-item>      
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.date_of_hagz.errors?.required">
+     من فضلك ادخل تاريخ الخلوة
+    </span>
+
+    <ion-item>
+      <ion-label position="fixed">عدد الأفراد</ion-label>
+      <ion-select formControlName="per_number" cancelText="أغلاق" interface="action-sheet">
+        <ion-select-option *ngFor="let per_number of per">{{per_number}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.per_number.errors?.required">
+      من فضلك ادخل عدد الأفراد اقل عدد 1 وأكبر عدد 3
+    </span>
+
+    <ion-item>
+      <ion-label position="fixed">ملاحظات</ion-label>
+      <ion-textarea formControlName="note"  rows="4" cols="20"></ion-textarea>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" class="btn-s">حجز</ion-button>
+      </ion-col>
+    </ion-row>
+   
+  </form>
+
+</div>
+
+  <div *ngIf="show == 'bad' && !cash">
+    <p class="lod-error">يوجد خطأ حاول مرة أخرى <br>أو تأكد من أتصال الأنترنت</p>
+  </div>
+
+</ion-content>
+ 

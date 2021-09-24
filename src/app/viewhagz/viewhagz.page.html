@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+        حجوزاتى 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="أسحب لأعادة التحميل" refreshingSpinner="lines-small">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <div *ngIf="show == 'good' && !cash">
+    <div *ngIf="!showw">
+      <ion-card *ngFor="let hag of hagz | keyvalue: originalOrder">
+        <ion-card-content>
+          <p> الكنيسة :- {{hag.value.church}} </p>
+          <p> أب الإعتراف :- {{hag.value.father}} </p>
+          <p> تاريخ الحجز :-  {{hag.value.date_of_hagz}} </p>
+          <p> عدد الأفراد :- {{hag.value.per_number}} </p>
+          <p> ملاحظات :- {{hag.value.note}} </p>
+          <p> حالة الطلب :- {{hag.value.state}} </p>
+        </ion-card-content>
+        
+        <ion-button color="danger" (click)="delete(hag.value.id)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+
+      </ion-card>
+  </div>
+
+  <ion-card *ngIf="showw">
+    <ion-grid>
+      <ion-row>
+        <ion-col>لا توجد حجوزات !</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</div>
+
+
+<div *ngIf="show == 'bad' && !cash">
+  <p class="lod-error">يوجد خطأ حاول مرة أخرى <br>أو تأكد من أتصال الأنترنت</p>
+</div>
+
+</ion-content>

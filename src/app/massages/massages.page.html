@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+        البريد
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="أسحب لأعادة التحميل" refreshingSpinner="lines-small">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+<div *ngIf="show == 'good' && !cash">
+
+  <div *ngIf="!showw">
+    <ion-card *ngFor="let massage of massages | keyvalue: originalOrder">
+      <ion-card-header>
+        <ion-card-title>{{massage.value.title}}</ion-card-title>
+        <ion-card-subtitle>{{massage.value.created_at}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content [innerHTML]="massage.value.massage"></ion-card-content>
+       
+      <ion-button color="danger" (click)="delete(massage.value.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+
+    </ion-card>
+ </div>
+
+ <ion-card *ngIf="showw">
+  <ion-grid>
+    <ion-row>
+      <ion-col>لا يوجد بريد !</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+</div>
+
+<div *ngIf="show == 'bad' && !cash">
+  <p class="lod-error">يوجد خطأ حاول مرة أخرى <br>أو تأكد من أتصال الأنترنت</p>
+</div>
+
+
+</ion-content>

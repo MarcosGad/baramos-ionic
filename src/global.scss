@@ -1,0 +1,151 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+ion-tab-button {
+    --color-selected: #fff;
+    --ripple-color: #482915;
+    --color: #000;
+    --background: #c67f52;	
+    font-size: 12px !important;
+}
+
+.sc-ion-card-md-h{
+    --color: #000 !important;
+}
+
+.sc-ion-card-md-h{
+    box-shadow: 0 3px 1px -2px #8fb8e0, 0 2px 2px 0 #8fb8e0, 0 1px 5px 0 #8fb8e0;
+    background-color: #8fb8e0;
+}
+.swiper-pagination-bullet-active{
+    background: #482915;
+}
+.icon-m{
+    color: #c67f52;
+    margin: 4px;
+    font-size: 24px;
+}
+.icon-m-s{
+    color: #fff;
+}
+
+ion-menu-button{
+    color: #fff;
+}
+
+ion-item{
+    --padding-start : 0px !important;
+}
+
+ion-loading{
+    --spinner-color: #482915 !important
+}
+
+.loading-wrapper.sc-ion-loading-md{
+    background: none;
+    box-shadow: none;
+}
+
+ion-spinner {
+    width: 45px !important;
+    height: 45px !important;
+}
+.start-login ion-toolbar{
+    --background: #c67f52 !important;
+    color: #fff !important;
+    padding: 0;
+}
+.page-title{
+    font-size: 15px;
+    padding: 0;
+    color: #fff;
+}
+
+ion-toolbar{
+    --background:#c67f52 !important;
+}
+
+.btn-s{
+    --background: #69452e;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    --border-color: #8b817b;
+    --color: #fff;
+    --color-focused: #69452e;
+    --color-hover: #fff;
+    --background-hover: #69452e;
+}
+
+.btn-re{
+    margin-bottom: 15px;
+    margin-top: 10px;
+    --border-color: #69452e;
+    --color: #69452e;
+    --color-focused: #69452e;
+}
+
+ion-input{
+    --padding-start: 6px !important;
+}
+.error{
+    color: red;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+ion-tab-bar{
+    height: 51px;
+}
+ion-header ion-toolbar:first-child{
+    cursor: pointer;
+}
+
+.customToast {
+    //text-align: center !important;
+    //--button-color: #ffffff;
+    //--max-height: 70px;
+    --background: red;
+    //--border-style:solid;
+    //--border-width :1px;
+    //--border-color:#d33939;
+    //--color:#ffffff !important; 
+}
+
+ion-fab-button{
+    --background:#c67f52;
+    --background-hover:#c67f52;
+} 
+.sym{
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.lod-error{
+    text-align: center;
+    margin-top: 50%;
+    color: red;
+}
+
+

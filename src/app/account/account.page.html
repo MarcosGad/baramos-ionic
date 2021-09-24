@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+         حسابى
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="أسحب لأعادة التحميل" refreshingSpinner="lines-small">
+    </ion-refresher-content>
+  </ion-refresher>
+ 
+  <div *ngIf="show == 'good' && !cash">
+  <ion-list>
+    <form novalidate [formGroup]="user">
+      <ion-item>
+        <ion-input type="text" formControlName="name" placeholder="الأسم" [(ngModel)]="userData.name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" formControlName="email" placeholder="البريد الألكترونى" [(ngModel)]="userData.email"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col size="4">
+          <ion-item>
+            <ion-select formControlName="birth_day" cancelText="أغلاق" [(ngModel)]="userData.birth_day" interface="action-sheet" placeholder="يوم">
+              <ion-select-option *ngFor="let birth_day of day">{{birth_day}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-select formControlName="birth_month" cancelText="أغلاق" [(ngModel)]="userData.birth_month" interface="action-sheet" placeholder="شهر">
+              <ion-select-option *ngFor="let birth_month of month">{{birth_month}}</ion-select-option>
+            </ion-select>
+          </ion-item>   
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-select formControlName="birth_year" cancelText="أغلاق" [(ngModel)]="userData.birth_year" interface="action-sheet" placeholder="سنة">
+              <ion-select-option *ngFor="let birth_year of year">{{birth_year}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-input type="text" formControlName="phone_number" placeholder="رقم المحمول" [(ngModel)]="userData.phone_number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="city" placeholder="المحافظة" [(ngModel)]="userData.city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="church" placeholder="الكنيسة / الإيبارشية" [(ngModel)]="userData.church"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="father" placeholder="أب الإعتراف" [(ngModel)]="userData.father"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="work" placeholder="الدراسة / العمل" [(ngModel)]="userData.work"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="password" placeholder="كلمة السر الجديدة" [(ngModel)]="userData.password"></ion-input>
+      </ion-item>
+  
+      <ion-button expand="block" class="btn-s" [disabled]="user.invalid" (click)="edit()">تعديل</ion-button>
+
+</form>
+</ion-list>
+</div>
+
+<div *ngIf="show == 'bad' && !cash">
+  <p class="lod-error">يوجد خطأ حاول مرة أخرى <br>أو تأكد من أتصال الأنترنت</p>
+</div>
+
+</ion-content>

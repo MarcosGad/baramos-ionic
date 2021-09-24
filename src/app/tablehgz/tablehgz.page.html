@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+      جدول بيت الخلوة 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="أسحب لأعادة التحميل" refreshingSpinner="lines-small">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <div *ngIf="show == 'good'">
+  <ion-card *ngFor="let table of tablehgz">
+    <ion-card-header>
+      <ion-card-title class="table-title">{{table.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content [innerHTML]="table.table"></ion-card-content> 
+  </ion-card>
+  </div>
+
+  <div *ngIf="show == 'bad'">
+    <p class="lod-error">يوجد خطأ حاول مرة أخرى <br>أو تأكد من أتصال الأنترنت</p>
+  </div>
+
+</ion-content>

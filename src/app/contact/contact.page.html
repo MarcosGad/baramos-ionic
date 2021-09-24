@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+        أتصل بنا 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+  
+    <ion-item>
+       <ion-textarea formControlName="massage" rows="6" cols="20" placeholder="أترك رسالتك"></ion-textarea>
+     </ion-item>
+ 
+     <ion-row>
+       <ion-col>
+         <ion-button type="submit" [disabled]="ionicForm.invalid" expand="block" class="btn-s">ارسال رسالتك</ion-button>
+       </ion-col>
+     </ion-row>
+ 
+   </form>
+</ion-content>

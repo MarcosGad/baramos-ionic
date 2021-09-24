@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+      تسجيل الدخول 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <img src="../../assets/img/login.png" class="img-login">
+  
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item>
+      <ion-input formControlName="username" type="text" placeholder="البريد الألكترونى"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
+      من فضلك ادخل البريد الألكترونى
+    </span>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
+      من فضلك ادخل البريد الألكترونى بشكل صحيح
+    </span>
+
+    
+    <ion-item>
+      <ion-input formControlName="password" type="password" placeholder="كلمة السر"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+      من فضلك ادخل كلمة السر
+    </span>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minLength">
+      من فضلك كلمة السر أكثر من 6 حروف
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" class="btn-s">تسجيل الدخول</ion-button>
+      </ion-col>
+    </ion-row>
+   
+  </form>
+  <!--
+  <ion-button (click)="login()" expand="block" class="btn-s">تسجيل الدخول من الحاسب</ion-button>
+  -->
+  <ion-button expand="block" fill="outline" class="btn-re" routerLink="/register">انشاء حساب؟</ion-button>
+
+  <ion-button expand="block" fill="outline" class="btn-re" routerLink="/sendresetemail">نسيت كلمة السر؟</ion-button>
+
+
+</ion-content>

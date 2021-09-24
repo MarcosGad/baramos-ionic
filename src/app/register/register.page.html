@@ -1,0 +1,134 @@
+
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button color="dark" defaultHref="/tab3"></ion-back-button>
+      </ion-buttons>
+    <ion-title class="page-title">
+       انشاء حساب
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+
+    <ion-item>
+      <ion-input formControlName="name" type="text" placeholder="الأسم"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+      من فضلك ادخل الأسم 
+    </span>
+   
+
+    <ion-item>
+      <ion-input formControlName="email" type="email" placeholder="البريد الألكترونى"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+      من فضلك ادخل البريد الألكترونى
+    </span>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+      من فضلك ادخل البريد الألكترونى بشكل صحيح
+    </span>
+
+  
+    <ion-row>
+      <ion-col size="4">
+        <ion-item>
+          <ion-select formControlName="birth_day" cancelText="أغلاق" interface="action-sheet" placeholder="يوم">
+            <ion-select-option *ngFor="let birth_day of day">{{birth_day}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.birth_day.errors?.required">
+          من فضلك ادخل يوم الميلاد
+        </span>
+      </ion-col>
+      <ion-col size="4">
+        <ion-item>
+          <ion-select formControlName="birth_month" cancelText="أغلاق" interface="action-sheet" placeholder="شهر">
+            <ion-select-option *ngFor="let birth_month of month">{{birth_month}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.birth_month.errors?.required">
+          من فضلك ادخل شهر الميلاد
+        </span>    
+      </ion-col>
+      <ion-col size="4">
+        <ion-item>
+          <ion-select formControlName="birth_year" cancelText="أغلاق" interface="action-sheet" placeholder="سنة">
+            <ion-select-option *ngFor="let birth_year of year">{{birth_year}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.birth_year.errors?.required">
+          من فضلك ادخل سنة الميلاد
+        </span>
+      </ion-col>
+    </ion-row>
+    
+    <ion-item>
+      <ion-input formControlName="city" type="text" placeholder="المحافظة"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.city.errors?.required">
+      من فضلك ادخل المحافظة 
+    </span>
+
+    <ion-item>
+      <ion-input formControlName="phone_number" type="text" placeholder="رقم المحمول"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.phone_number.errors?.required">
+      من فضلك ادخل رقم المحمول 
+    </span>
+
+    <ion-item>
+      <ion-input formControlName="church" type="text" placeholder="الكنيسة / الأيبارشية"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.church.errors?.required">
+      من فضلك ادخل الكنيسة / الأيبارشية 
+    </span>
+
+    <ion-item>
+      <ion-input formControlName="father" type="text" placeholder="اب الأعتراف"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.father.errors?.required">
+     من غضلك ادخل اسم اب الأعتراف
+    </span>
+
+    <ion-item>
+      <ion-input formControlName="work" type="text" placeholder="الدراسة / العمل"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.work.errors?.required">
+     من غضلك ادخل   الدراسة / العمل  
+    </span>
+
+    <ion-item>
+      <ion-input formControlName="password" type="password" placeholder="كلمة السر"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+      من فضلك ادخل كلمة السر
+    </span>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minLength">
+      من فضلك كلمة السر أكثر من 6 حروف
+    </span>
+
+
+    <ion-item>
+      <ion-input formControlName="c_password" type="password" placeholder="اعادة كلمة السر"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.c_password.errors?.required">
+      من فضلك اعد كتابة كلمة السر
+    </span>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.c_password.errors?.minLength">
+      من فضلك كلمة السر أكثر من 6 حروف
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" class="btn-s">تسجيل</ion-button>
+      </ion-col>
+    </ion-row>
+   
+
+  </form>
+</ion-content>
